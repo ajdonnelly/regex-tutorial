@@ -22,7 +22,9 @@ Regular expressions (commonly shortened to regex or regexp) are grouping of char
 - [Grouping and Capturing](#grouping-and-capturing)
 - [Greedy and Lazy Match](#greedy-and-lazy-match)
 - [Backreferences](#backreferences)
-- [Look-ahead and Look-behind](#look-ahead-and-look-behind)
+- [Breaking Email](#email-breakdown)
+- [Regex Breakdown](#regex-breakdown)
+- [Author](#author)
 
 ## Regex Components
 
@@ -111,15 +113,21 @@ In our regex we have a pattern of multiple strings and quantifiers that we are a
 
 Quantifiers give regex processors a choice between continually matching the preceding atom or matching it as few times as possible. These quantifiers are described as greedy and lazy quantifiers, respectively. A regular expression processor is by default always greedy. To prevent a greedy quanitfier from being greedy, add a question mark and the end of it. The quantifiers in our regex are inherently greedy but we have no need to make them lazy. 
 
+### Custom Quantifiers
+
+You can use curly brackets ({}) to define how many times you want to match an atom. The format of curly brackets is {min,max}. min is the minimum number of times that you want the regular expression processor to match your atom. max is the maximum number of times you want it to match your atom. In our regex, the custom quantifier asking the processor to match between 2 and 6 characters in the preceding bracket expression which is essentially limiting the length of the top level domain that will match to bewteen 2 and 6 characters. 
+
 ### Backreferences
 
 Backreferences essentially repeat an earlier (to the left) matched capturing group. They indicated by a \ followed by a number. There are no backreferences in our regex, but this is an important concept to know. 
 
-### Breaking Down my Email
+### Email Breakdown
 
 My email is a.james.donnelly@gmail.com. It matches the regex /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/ because the a.james.donnelly matches [a-zA-Z0-9._%-]+ and precedes a (@) and the gmail portion matches [a-zA-Z0-9.-]+ and immediately precedes a (.) which is followed by com which matches [a-zA-Z]. 
 
-### Breaking down the Common Email ID Regex
+### Regex Breakdown
+
+Here I will break down the Common Email ID Regex line by line or expression by expression. 
 
 / - this is the opening delimiter
 ^ - this is the opening anchor
@@ -131,13 +139,11 @@ a-zA-Z0-9._%- - this is the string literal within the bracket expression. It con
 [a-zA-Z0-9.-]+ - this is the other bracket expression consisting like the one before of character literals and character classes. 
 \. - this is the escaped metacharacter  (.) 
 [a-zA-Z] - this is the last bracket expression consisting of two character classes. 
-
-{2,6}
-
+{2,6} - this is the custom quantifier setting a min and max length of matching characters for the preceding character class. 
 ) - this is the close of the capture group. 
-*
+* - here were asking the processr to match zero or more of the preceding capture group. Ie keep going until there are no matches. 
 $ = this is the closing anchor
-/ = this is the clsing delimiter
+/ = this is the closing delimiter
 
 ## Author
 
