@@ -21,6 +21,7 @@ Regular expressions (commonly shortened to regex or regexp) are grouping of char
 - [Flags](#flags)
 - [Grouping and Capturing](#grouping-and-capturing)
 - [Greedy and Lazy Match](#greedy-and-lazy-match)
+- [Custom Quantifiers](#custom-quantifiers)
 - [Backreferences](#backreferences)
 - [Breaking Email](#email-breakdown)
 - [Regex Breakdown](#regex-breakdown)
