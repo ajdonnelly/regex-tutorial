@@ -1,6 +1,4 @@
-# Title (replace with your title)
-
- The Common Email Id Regex
+# The Common Email Id Regex
 
 ## Summary
 
